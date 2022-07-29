@@ -16,7 +16,6 @@ Chocスイッチか CHERRY MXスイッチのどちらか一つを選んで使う
 <br>
 Up to 4 rotary encoders can be installed. It is also possible to take an OLED display.
 <br>
-<br>
 ロータリーエンコーダーを最大4個取り付けることが可能です。また、OLEDディスプレイも取りけることが可能です。
 <br>
 <br>
