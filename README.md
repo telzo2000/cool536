@@ -1,6 +1,8 @@
 # cool536
 ## What is cool536？
 
+![](img/img0001.jpg)
+
 The coo536 is a 36-key split keyboard.
 <br>
 The key layout is column staggered.
