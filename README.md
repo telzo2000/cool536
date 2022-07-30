@@ -20,6 +20,10 @@ Up to 4 rotary encoders can be installed. It is also possible to take an OLED di
 <br><br>
 ロータリーエンコーダーを最大4個取り付けることが可能です。また、OLEDディスプレイも取りけることが可能です。
 <br>
+
+![](img/img0002.jpg)
+
+
 <br>
 The size of the PCB is within 100mmX100mm.
 <br>
