@@ -52,6 +52,4 @@ Preparing now.
 <br>
 
 ## Firmware
-Preparing now.
-<br>
-ただいま準備中。
+https://github.com/telzo2000/cool536/tree/main/firmware
