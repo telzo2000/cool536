@@ -45,38 +45,33 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 };
 
 bool encoder_update_user(uint8_t index, bool clockwise) {
-    if (index == 0) { /* Left encoder */
-        switch (get_highest_layer(layer_state)) {
-            case _QWERTY:
+    if (index == 0) { /* Left encoder left */
                 if (clockwise) {
-                    tap_code(KC_TAB);
+                    tap_code(KC_LEFT);
                 } else {
-                    tap_code16(S(KC_TAB));
+                    tap_code(KC_RIGHT);
                 }
-                break;
-            case _RAISE:
+    } else if (index == 1) { /* Left encoder right */
                 if (clockwise) {
-                //    tap_code(KC_VOLU);
-                    if(keymap_config.swap_lalt_lgui==false){
-                        tap_code(KC_LANG2);
-                    }else {
-                        tap_code16(A(KC_GRV));
-                    }
+                    tap_code(KC_SPC);
                 } else {
-                    if(keymap_config.swap_lalt_lgui==false){
-                    tap_code(KC_LANG1);
-                    } else {
-                        tap_code16(A(KC_GRV));
-                    }
+                    tap_code(KC_BSPC);
                 }
-                break;
-            case _ADJUST:
+    } else if (index == 2) { /* Right encoder left */
                 if (clockwise) {
                     tap_code(KC_VOLU);
                 } else {
                     tap_code(KC_VOLD);
+                }
+    } else if (index == 3) { /* Right encoder right */
+                if (clockwise) {
+                    tap_code(KC_UP);
+                } else {
+                    tap_code(KC_DOWN);
+                }        
             }
-        }
+return false;
+}
 
     } else if (index == 1) { /* Right encoder */
         if (clockwise) {
