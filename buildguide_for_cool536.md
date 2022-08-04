@@ -7,7 +7,7 @@
 |--|--|--|--|--|--|
 |番号|名前|数|備考|調達先|参考価格（送料込）|<br>
 |1|PCB|2|40%splite keyboard|[elecrow](https://www.elecrow.com)<br>[JLCPCB](https://jlcpcb.com)<br>[ALLPCB](https://www.allpcb.com)|５枚で10〜20ドル|<br>
-|2-1|Switch Plate<br>スイッチプレート|2|アクリル|[工房Emerge+](https://www.emergeplus.jp/laser-cutting-service/contact/)<br>[遊舎工房](https://yushakobo.jp)<br>[elecrow](https://www.elecrow.com)|種類による。|
+|2-1|Switch Plate<br>スイッチプレート|2|アクリル<br>https://github.com/telzo2000/cool536/tree/main/case_design|[工房Emerge+](https://www.emergeplus.jp/laser-cutting-service/contact/)<br>[遊舎工房](https://yushakobo.jp)<br>[elecrow](https://www.elecrow.com)|種類による。|
 |2-2|Cover Plate<br>カバープレート|2|↑|↑|↑|
 |2-3|Bottom Plate<br>ボトムプレート|2|↑|↑|↑|
 |3|M2screw<br>M2ネジ|16|4mm<br>CoverPlateで使用|DIYショップなど|10本で100円程度|
