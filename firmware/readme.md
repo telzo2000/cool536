@@ -7,9 +7,7 @@ If you don't need a rotary encoder,
 ロータリーエンコーダが不要な場合、
 <br>
 <br>
-https://github.com/telzo2000/cool536/tree/main/firmware/firmware_cool536/cool536<br>-
-
-<br>
+https://github.com/telzo2000/cool536/tree/main/firmware/firmware_cool536/cool536<br>
 [remap](https://remap-keys.app)に対応済み。
 <br>
 If you need a rotary encoder,
