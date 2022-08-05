@@ -45,6 +45,7 @@ Please use at your own risk.
 
 ## Build Guide
 https://github.com/telzo2000/cool536/blob/main/buildguide_for_cool536.md
+<br>
 Writing now.
 <br>
 ただいま執筆中。
