@@ -44,43 +44,139 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   ) 
 };
 
-bool encoder_update_user(uint8_t index, bool clockwise) {
-    if (index == 0) { /* Left encoder left */
-                if (clockwise) {
-                    tap_code(KC_LEFT);
-                } else {
-                    tap_code(KC_RIGHT);
-                }
-    } else if (index == 1) { /* Left encoder right */
-                if (clockwise) {
-                    tap_code(KC_SPC);
-                } else {
-                    tap_code(KC_BSPC);
-                }
-    } else if (index == 2) { /* Right encoder left */
-                if (clockwise) {
-                    tap_code(KC_VOLU);
-                } else {
-                    tap_code(KC_VOLD);
-                }
-    } else if (index == 3) { /* Right encoder right */
-                if (clockwise) {
-                    tap_code(KC_UP);
-                } else {
-                    tap_code(KC_DOWN);
-                }        
-            }
-return false;
+keyevent_t encoder1_ccw = {
+    .key = (keypos_t){.row = 4, .col = 0},
+    .pressed = false
+};
+
+keyevent_t encoder1_cw = {
+    .key = (keypos_t){.row = 4, .col = 1},
+    .pressed = false
+};
+
+keyevent_t encoder2_ccw = {
+    .key = (keypos_t){.row = 4, .col = 2},
+    .pressed = false
+};
+
+keyevent_t encoder2_cw = {
+    .key = (keypos_t){.row = 4, .col = 3},
+    .pressed = false
+};
+
+keyevent_t encoder3_ccw = {
+    .key = (keypos_t){.row = 9, .col = 1},
+    .pressed = false
+};
+
+keyevent_t encoder3_cw = {
+    .key = (keypos_t){.row = 9, .col = 0},
+    .pressed = false
+};
+
+keyevent_t encoder4_ccw = {
+    .key = (keypos_t){.row = 9, .col = 3},
+    .pressed = false
+};
+
+keyevent_t encoder4_cw = {
+    .key = (keypos_t){.row = 9, .col = 2},
+    .pressed = false
+};
+
+
+void matrix_scan_user(void) {
+    if (IS_PRESSED(encoder1_ccw)) {
+        encoder1_ccw.pressed = false;
+        encoder1_ccw.time = (timer_read() | 1);
+        action_exec(encoder1_ccw);
+    }
+
+    if (IS_PRESSED(encoder1_cw)) {
+        encoder1_cw.pressed = false;
+        encoder1_cw.time = (timer_read() | 1);
+        action_exec(encoder1_cw);
+    }
+
+    if (IS_PRESSED(encoder2_ccw)) {
+        encoder2_ccw.pressed = false;
+        encoder2_ccw.time = (timer_read() | 1);
+        action_exec(encoder2_ccw);
+    }
+
+    if (IS_PRESSED(encoder2_cw)) {
+        encoder2_cw.pressed = false;
+        encoder2_cw.time = (timer_read() | 1);
+        action_exec(encoder2_cw);
+    }
+
+    if (IS_PRESSED(encoder3_ccw)) {
+        encoder3_ccw.pressed = false;
+        encoder3_ccw.time = (timer_read() | 1);
+        action_exec(encoder3_ccw);
+    }
+
+    if (IS_PRESSED(encoder3_cw)) {
+        encoder3_cw.pressed = false;
+        encoder3_cw.time = (timer_read() | 1);
+        action_exec(encoder3_cw);
+    }
+
+    if (IS_PRESSED(encoder4_ccw)) {
+        encoder4_ccw.pressed = false;
+        encoder4_ccw.time = (timer_read() | 1);
+        action_exec(encoder4_ccw);
+    }
+
+    if (IS_PRESSED(encoder4_cw)) {
+        encoder4_cw.pressed = false;
+        encoder4_cw.time = (timer_read() | 1);
+        action_exec(encoder4_cw);
+    }
 }
 
-    } else if (index == 1) { /* Right encoder */
+bool encoder_update_user(uint8_t index, bool clockwise) {
+    if (index == 0) {
         if (clockwise) {
-            tap_code(KC_PGDN);
+            encoder1_cw.pressed = true;
+            encoder1_cw.time = (timer_read() | 1);
+            action_exec(encoder1_cw);
         } else {
-            tap_code(KC_PGUP);
+            encoder1_ccw.pressed = true;
+            encoder1_ccw.time = (timer_read() | 1);
+            action_exec(encoder1_ccw);
+        }
+    } else if (index == 1) {
+        if (clockwise) {
+            encoder2_cw.pressed = true;
+            encoder2_cw.time = (timer_read() | 1);
+            action_exec(encoder2_cw);
+        } else {
+            encoder2_ccw.pressed = true;
+            encoder2_ccw.time = (timer_read() | 1);
+            action_exec(encoder2_ccw);
+        }
+    } else if (index == 2) {
+        if (clockwise) {
+            encoder3_cw.pressed = true;
+            encoder3_cw.time = (timer_read() | 1);
+            action_exec(encoder3_cw);
+        } else {
+            encoder3_ccw.pressed = true;
+            encoder3_ccw.time = (timer_read() | 1);
+            action_exec(encoder3_ccw);
+        }
+    } else if (index == 3) {
+        if (clockwise) {
+            encoder4_cw.pressed = true;
+            encoder4_cw.time = (timer_read() | 1);
+            action_exec(encoder4_cw);
+        } else {
+            encoder4_ccw.pressed = true;
+            encoder4_ccw.time = (timer_read() | 1);
+            action_exec(encoder4_ccw);
         }
     }
-return false;
+
+    return true;
 }
-
-
