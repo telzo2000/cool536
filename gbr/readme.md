@@ -1,6 +1,7 @@
 # gerber file 
 <br>
 # change history
+
 ver.1.20 Enlarged screw holes on the pcb.A spacer is passed through from the switch plate to the bottom plate.
 <br>
 ver.1.20 pcbのネジ穴の拡張した。スイッチプレートからボトムプレートまでスペーサーを通す形式にした。
