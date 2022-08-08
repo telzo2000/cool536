@@ -24,4 +24,11 @@
 |11|タクトスイッチ|2|２本足のもの|[遊舎工房](https://yushakobo.jp)<br>[Talp Keyboard](https://talpkeyboard.net)<br>[Daily Craft Keyboard](https://shop.dailycraft.jp)等|１個11円程度|
 |12|TRRSジャック|2|MJ-4PP-9|[遊舎工房](https://yushakobo.jp)<br>[Talp Keyboard](https://talpkeyboard.net)<br>[Daily Craft Keyboard](https://shop.dailycraft.jp)等|１個55円|
 
+In addition, you will need a TRRS cable, USB cable, keycaps, etc.
+<br>
 この他に、TRRSケーブル、USBケーブル、キーキャップ等が必要です。
+<br>
+For ver.1.20 PCB, 4 M2spacer 8mm are required instead of 6A, and 4 M2spacer 5mm are required instead of 6B.
+<br>
+ver.1.20のPCBでは、6Aの代わりにM2spacer8mmを４本、6Bの代わりにM2spacer5mmを４本、必要となります。
+<br>
