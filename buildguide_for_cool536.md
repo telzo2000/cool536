@@ -248,6 +248,25 @@ If you like, attach a rubber cushion to the back and you're done.
 <br>
 <br>
 
+### Option 1 Installing a rotary encoder
+
+cool536 can be equipped with 1 to 2 rotary encoders on the left and right, for a total of 4 rotary encoders.
+<br>
+cool536は、左右に１〜２個、合計４個のロータリーエンコーダーを取り付けることができます。
+<br><br>
+
+### Option 2 Mounting the OLED display
+
+The left side of the cool536 can be fitted with an OLED display.
+<br>
+In that case, the rotary encoder cannot be attached to the left side of the cool536.
+<br>
+cool536の左側には、OLEDディスプレイを取り付けることができます。
+<br>
+その場合、cool536の左側には、ロータリーエンコーダーを取り付けることができません。
+<br>
+<br>
+
 ## Build 2(Acrylic sandwich mount case)
 
 ![](img/img00020.jpg)
@@ -276,6 +295,11 @@ There is an orientation of the cover plate, so it is good to check it once befor
 カバープレートの向きがあり、作業前に一度、重ねて確認すると良いです。
 <br>
 <br>
+A special cover plate is required when installing a rotary encoder or an OLED display.
+<br>
+ロータリーエンコーダーまたはOLEDディスプレイを取り付けているとき、専用のカバープレートが必要となります。
+<br><br>
+
 
 ### 2-1 Installation of switch plate（choc switch）
 
