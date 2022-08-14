@@ -25,3 +25,4 @@ Notice:Do not use remap.Edit the rotary encoder directly with QMK_Firmware.
 <br>
 <br>
 注意；remapに未対応。ロータリーエンコーダの編集は、QMK＿Firmwareで直接編集してください。
+
