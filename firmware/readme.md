@@ -21,8 +21,8 @@ If you need a rotary encoder,
 <br>
 https://github.com/telzo2000/cool536/tree/main/firmware/firmware_cool536r/cool536r<br>
 <br>
-Notice:Do not use remap.Edit the rotary encoder directly with QMK_Firmware.
+Notice:Some unofficial support for remap.Edit the rotary encoder directly with QMK_Firmware.
 <br>
 <br>
-注意；remapに未対応。ロータリーエンコーダの編集は、QMK＿Firmwareで直接編集してください。
+注意；remapに非公式に一部が対応。ロータリーエンコーダの編集は、QMK＿Firmwareで直接編集してください。
 
