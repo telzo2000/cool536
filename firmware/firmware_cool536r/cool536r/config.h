@@ -13,12 +13,12 @@
 #define PRODUCT      cool536r
 
 /* key matrix size */
-#define MATRIX_ROWS 8
+#define MATRIX_ROWS 10
 #define MATRIX_COLS 5
 
-#define MATRIX_ROW_PINS { B5, B4, B1 , F7 }
+#define MATRIX_ROW_PINS { B5, B4, B1 , F7, D0 }
 #define MATRIX_COL_PINS { B2, B6, B3, F6, F5 }
-#define MATRIX_ROW_PINS_RIGHT { B5, B4, B1 , F7 }
+#define MATRIX_ROW_PINS_RIGHT { B5, B4, B1 , F7, D0 }
 #define MATRIX_COL_PINS_RIGHT { B2, B6, B3, F6, F5  }
 #define UNUSED_PINS
 
