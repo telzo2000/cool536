@@ -3,6 +3,12 @@
 
 # change history
 
+
+<br>
+cool536xiao_ver.1.1 Seeed XIAO RP2040 compatible cool536.However, the firmware has not yet been developed.
+<br>
+cool536xiao_ver.1.1 Seeed XIAO RP2040対応のcool536。ただし、ファームウェアは未整備。
+<br>
 ver.1.20　Enlarged screw holes on the pcb.A spacer is passed through from the switch plate to the bottom plate.
 <br>
 ver.1.20　pcbのネジ穴の拡張した。スイッチプレートからボトムプレートまでスペーサーを通す形式にした。
