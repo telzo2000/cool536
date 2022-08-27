@@ -10,7 +10,7 @@
 |2-1|Switch Plate<br>スイッチプレート|2|アクリル<br>[Plate data](https://github.com/telzo2000/cool536/tree/main/case_design)|[工房Emerge+](https://www.emergeplus.jp/laser-cutting-service/contact/)<br>[遊舎工房](https://yushakobo.jp)<br>[elecrow](https://www.elecrow.com)|種類による。|
 |2-2|Cover Plate<br>カバープレート|2|↑|↑|↑|
 |2-3|Bottom Plate<br>ボトムプレート|2|↑|↑|↑|
-|3|M2screw<br>M2ネジ|16|4mm<br>CoverPlateで使用|DIYショップなど|10本で100円程度|
+|3|M2screw<br>M2ネジ|16|4mm<br>CoverPlateで使用<br>3mmでも代用可|DIYショップなど|10本で100円程度|
 |4|M2screw<br>M2ネジ|8|3mm<br>BottomPlateで使用|↑|↑|
 |5A|M2screw<br>M2ネジ|8|8mm<br>MXスイッチ使用時SwitchPlateで使用|↑|↑|
 |5B|M2screw<br>M2ネジ|8|6mm<br>chocスッチ使用時SwitchPlateで使用|↑|↑|
