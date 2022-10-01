@@ -23,6 +23,7 @@ https://github.com/telzo2000/cool536/tree/main/firmware/firmware_cool536r<br>
 <br>
 [remap](https://remap-keys.app)に対応済み。
 <br>
+<br>
 If you need a trackball,
 <br>
 <br>
