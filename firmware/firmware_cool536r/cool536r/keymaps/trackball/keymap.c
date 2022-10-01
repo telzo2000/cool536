@@ -3,12 +3,24 @@
 
 #include QMK_KEYBOARD_H
 
+typedef union {
+  uint32_t raw;
+  struct {
+    int8_t trackball_movement_ratio;
+    int8_t mode;
+  };
+} user_config_t;
+
+user_config_t user_config;
 
 enum custom_keycodes {
     KC_MY_BTN1 = SAFE_RANGE,
     KC_MY_BTN2,
     KC_MY_BTN3,
     KC_MY_SCR,
+    KC_TB_RAT_INC,
+    KC_TB_RAT_DEC,
+    KC_TB_MODE,
 };
 
 
@@ -37,7 +49,6 @@ int16_t scroll_h_threshold = 30;    // この閾値を超える度に水平ス�
 int16_t after_click_lock_movement = 0;      // クリック入力後の移動量を測定する変数。 Variable that measures the amount of movement after a click input.
 
 int16_t mouse_record_threshold = 30;    // ポインターの動きを一時的に記録するフレーム数。 Number of frames in which the pointer movement is temporarily recorded.
-int16_t mouse_move_count_ratio = 5;     // ポインターの動きを再生する際の移動フレームの係数。 The coefficient of the moving frame when replaying the pointer movement.
 
 int16_t mouse_record_x;
 int16_t mouse_record_y;
@@ -60,7 +71,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
         LT(7, KC_Q), KC_W, KC_E, KC_R, KC_T, KC_Y, KC_U, KC_I, KC_O, KC_P, 
         KC_A, KC_S, LT(6, KC_D), KC_F, KC_G, KC_H, KC_J, LT(6, KC_K), KC_L, KC_ENT, 
         LSFT_T(KC_Z), LGUI_T(KC_X), KC_C, KC_V, KC_B, KC_N, KC_M, KC_COMM, LCTL_T(KC_DOT), KC_BSPC, 
-        LALT_T(KC_LANG2), LSFT_T(KC_TAB), LT(2, KC_SPC), LT(1, KC_LANG1), KC_PGUP, KC_PGDN
+        KC_LCTL, KC_LGUI, LALT_T(KC_LANG2), LSFT_T(KC_TAB), LT(2, KC_SPC), LT(1, KC_LANG1)
     ),
     
     LAYOUT(
@@ -110,19 +121,33 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
         KC_NO, KC_NO, KC_NO, KC_NO, KC_F7, KC_F8, KC_F9, KC_F10, KC_F11, KC_F12, 
         KC_LSFT, KC_NO, KC_NO, KC_NO, KC_TRNS, KC_TRNS, KC_TRNS, KC_NO, MO(8), MO(9), 
         KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS
+    ),
     
     LAYOUT(
-        RGB_TOG, RGB_MOD, RGB_HUI, RGB_SAI, RGB_VAI, KC_NO, KC_NO, KC_NO, DF(0), DF(3), 
-        RGB_M_P, RGB_M_B, RGB_M_R, RGB_M_SW, RGB_M_SN, KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, 
+        RGB_TOG, RGB_MOD, RGB_HUI, RGB_SAI, RGB_VAI, KC_TB_RAT_INC, KC_TB_RAT_DEC, KC_TB_MODE, DF(0), DF(3), 
+        RGB_M_P, RGB_M_B, RGB_M_R, RGB_M_SW, RGB_M_SN, EEP_RST, KC_NO, KC_NO, KC_NO, KC_NO, 
         RGB_M_K, RGB_M_X, RGB_M_G, KC_NO, KC_NO, QK_BOOT, KC_NO, KC_NO, KC_NO, KC_NO, 
         KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS
+    ), 
     
     LAYOUT(
         KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_MY_BTN1, KC_MY_SCR, KC_MY_BTN2, KC_MY_BTN3, KC_TRNS,
         KC_TRNS, KC_TRNS, KC_MY_SCR, KC_MY_BTN1, KC_TRNS, KC_MY_SCR, KC_MY_BTN2, KC_MY_BTN3, KC_TRNS, KC_TRNS,
         KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS,
         KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS
+    )
 };
+
+void eeconfig_init_user(void) {
+    user_config.raw = 0;
+    user_config.trackball_movement_ratio = 10;
+    user_config.mode = 0;
+    eeconfig_update_user(user_config.raw);
+}
+
+void keyboard_post_init_user(void) {
+    user_config.raw = eeconfig_read_user();
+}
 
 // クリック用のレイヤーを有効にする。　Enable layers for clicks
 void enable_click_layer(void) {
@@ -149,7 +174,7 @@ int16_t my_abs(int16_t num) {
 }
 
 // 自前の符号を返す関数。 Function to return the sign.
-int16_t mmouse_move_y_sign(int16_t num) {
+int16_t my_sign(int16_t num) {
     if (num < 0) {
         return -1;
     }
@@ -198,7 +223,39 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
             } else {
                 enable_click_layer();   // スクロールキーを離した時に再度クリックレイヤーを有効にする。 Enable click layer again when the scroll key is released.
             }
-         return false;
+            return false;
+
+        case KC_TB_RAT_INC:
+            if (record->event.pressed) {
+                user_config.trackball_movement_ratio += 1;
+                eeconfig_update_user(user_config.raw);
+            }
+
+            return false;
+
+         case KC_TB_RAT_DEC:
+            if (record->event.pressed) {
+                if (user_config.trackball_movement_ratio > 1) user_config.trackball_movement_ratio -= 1;
+                eeconfig_update_user(user_config.raw);
+            }
+
+            return false;
+
+        case KC_TB_MODE:
+            if (record->event.pressed) {
+                
+                if (user_config.mode == 0)
+                {
+                    user_config.mode = 1;
+                }
+                else
+                {
+                    user_config.mode = 0;
+                }
+
+                eeconfig_update_user(user_config.raw);
+            }
+            return false; 
 
          default:
             if  (record->event.pressed) {
@@ -213,83 +270,91 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
 
 report_mouse_t pointing_device_task_user(report_mouse_t mouse_report) {
 
-    if (!is_record_mouse) {
-        if (mouse_report.x != 0 || mouse_report.y != 0) {
-            is_record_mouse = true;
-            mouse_record_x = 0;
-            mouse_record_y = 0;
-            mouse_record_count = 0;
+    if (user_config.mode == 0)
+    {
+        if (!is_record_mouse) {
+            if (mouse_report.x != 0 || mouse_report.y != 0) {
+                is_record_mouse = true;
+                mouse_record_x = 0;
+                mouse_record_y = 0;
+                mouse_record_count = 0;
+            }
         }
-    }
 
-    if (is_record_mouse) {
-        mouse_record_x += mouse_report.x;
-        mouse_record_y += mouse_report.y;
-        mouse_record_count++;
+        if (is_record_mouse) {
+            mouse_record_x += mouse_report.x; // * user_config.trackball_movement_ratio;
+            mouse_record_y += mouse_report.y; // * user_config.trackball_movement_ratio;
+            mouse_record_count++;
 
-        if (mouse_record_count >= mouse_record_threshold) {
-            mouse_interval_counter = 0;
-            int16_t absX = my_abs(mouse_record_x);
-            int16_t absY = my_abs(mouse_record_y);
-            is_mouse_move_x_min = absX < absY;
+            if (mouse_record_count >= mouse_record_threshold) {
+                mouse_interval_counter = 0;
+                int16_t absX = my_abs(mouse_record_x);
+                int16_t absY = my_abs(mouse_record_y);
+                is_mouse_move_x_min = absX < absY;
 
-            mouse_move_remain_count = absY + absX;
-            mouse_move_remain_count *= mouse_move_count_ratio;
+                mouse_move_remain_count = is_mouse_move_x_min ? absY : absX;
+                mouse_move_remain_count *= user_config.trackball_movement_ratio;
 
-            mouse_move_x_sign = mmouse_move_y_sign(mouse_record_x);
-            mouse_move_y_sign = mmouse_move_y_sign(mouse_record_y);
+                mouse_move_x_sign = my_sign(mouse_record_x);
+                mouse_move_y_sign = my_sign(mouse_record_y);
+
+                if (is_mouse_move_x_min) {
+                    if (mouse_record_x == 0) {
+                        mouse_interval_delta = 0;
+                    } else {
+                        mouse_interval_delta = (double)absX / (double)absY;
+                    }
+                } else {
+                    if (mouse_record_y == 0) {
+                        mouse_interval_delta = 0;
+                    } else {
+                        mouse_interval_delta = (double)absY / (double)absX;
+                    }
+                }
+
+                is_record_mouse = false;
+                mouse_record_count = 0;
+            }
+        }
+
+        if (mouse_move_remain_count > 0) {
+            mouse_interval_counter += mouse_interval_delta;
+
+            bool can_move_min = mouse_interval_counter >= 0.99;
+
+            if (can_move_min) {
+                mouse_interval_counter -= 0.99;
+            }
 
             if (is_mouse_move_x_min) {
-                if (mouse_record_x == 0) {
-                    mouse_interval_delta = 0;
-                } else {
-                    mouse_interval_delta = (double)absX / (double)absY;
+                
+                mouse_report.y = mouse_move_y_sign;
+
+                if (can_move_min) {
+                    mouse_report.x = mouse_move_x_sign;
                 }
             } else {
-                if (mouse_record_y == 0) {
-                    mouse_interval_delta = 0;
-                } else {
-                    mouse_interval_delta = (double)absY / (double)absX;
-                }
+                
+                mouse_report.x = mouse_move_x_sign;
+
+                if (can_move_min) {
+                    mouse_report.y = mouse_move_y_sign;
+                } 
             }
 
-            is_record_mouse = false;
-            mouse_record_count = 0;
+            mouse_report.x *= 1 + mouse_move_remain_count / 10;
+            mouse_report.y *= 1 + mouse_move_remain_count / 10;
+
+            mouse_move_remain_count--;
+        } else {
+            mouse_report.x = 0;
+            mouse_report.y = 0;
         }
     }
-
-    if (mouse_move_remain_count > 0) {
-        mouse_interval_counter += mouse_interval_delta;
-
-        bool can_move_min = mouse_interval_counter >= 1;
-
-        if (can_move_min) {
-            mouse_interval_counter -= 1;
-        }
-
-        if (is_mouse_move_x_min) {
-            
-            mouse_report.y = mouse_move_y_sign;
-
-            if (can_move_min) {
-                mouse_report.x = mouse_move_x_sign;
-            }
-        } else {
-            
-            mouse_report.x = mouse_move_x_sign;
-
-            if (can_move_min) {
-                mouse_report.y = mouse_move_y_sign;
-            } 
-        }
-
-        mouse_report.x *= 1 + mouse_move_remain_count / 10;
-        mouse_report.y *= 1 + mouse_move_remain_count / 10;
-
-        mouse_move_remain_count--;
-    } else {
-        mouse_report.x = 0;
-        mouse_report.y = 0;
+    else
+    {
+        mouse_report.x *= user_config.trackball_movement_ratio;
+        mouse_report.y *= user_config.trackball_movement_ratio;
     }
     
     int16_t current_x = mouse_report.x;

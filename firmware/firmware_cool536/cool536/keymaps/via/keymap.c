@@ -44,46 +44,4 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   ) 
 };
 
-void encoder_update_user(uint8_t index, bool clockwise) {
-    if (index == 0) { /* Left encoder */
-        switch (get_highest_layer(layer_state)) {
-            case _QWERTY:
-                if (clockwise) {
-                    tap_code(KC_TAB);
-                } else {
-                    tap_code16(S(KC_TAB));
-                }
-                break;
-            case _RAISE:
-                if (clockwise) {
-                //    tap_code(KC_VOLU);
-                    if(keymap_config.swap_lalt_lgui==false){
-                        tap_code(KC_LANG2);
-                    }else {
-                        tap_code16(A(KC_GRV));
-                    }
-                } else {
-                    if(keymap_config.swap_lalt_lgui==false){
-                    tap_code(KC_LANG1);
-                    } else {
-                        tap_code16(A(KC_GRV));
-                    }
-                }
-                break;
-            case _ADJUST:
-                if (clockwise) {
-                    tap_code(KC_VOLU);
-                } else {
-                    tap_code(KC_VOLD);
-            }
-        }
-
-    } else if (index == 1) { /* Right encoder */
-        if (clockwise) {
-            tap_code(KC_PGDN);
-        } else {
-            tap_code(KC_PGUP);
-        }
-    }
-}
 
