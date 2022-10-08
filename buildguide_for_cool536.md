@@ -267,6 +267,28 @@ cool536の左側には、OLEDディスプレイを取り付けることができ
 <br>
 <br>
 
+### OPtion 3 Installing PIM447 Trackball
+
+You can install the PIM447 on either the left or right side.
+<br>
+In that case, you will need trackballpart.
+<br><br>
+左右どちらでも、PIM447を取り付けることができます。
+<br>
+その時は、trackballpartが必要となります。
+<br>
+<br>
+In addition to PIM447 and trackballpart, you will need 10 M2 screws, 6 M2 spacers 3mm, and a pin header.
+<br><br>
+PIM447とtrackballpartの他に、M2ネジ10本、M2スペーサー3mm、ピンヘッダが必要となります。
+<br><br>
+
+![](img/img0004.jpg)
+![](img/img0005.jpg)
+![](img/img0006.jpg)
+
+<br><br><br>
+
 ## Build 2(Acrylic sandwich mount case)
 
 ![](img/img00020.jpg)
@@ -356,3 +378,6 @@ From here, proceed with step 7 of build1.
 Have a fun selfmade keyboard life!
 <br>
 楽しい自作キーボード生活を!
+
+![](img/img0007.jpg
+)

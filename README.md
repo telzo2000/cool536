@@ -23,6 +23,17 @@ Up to 4 rotary encoders can be installed. It is also possible to take an OLED di
 
 ![](img/img0002.jpg)
 
+<br>
+In addition, it is now possible to attach a PIM447 trackball.
+<br><br>
+さらに、PIM447トラックボールを取り付けることも可能となりました。
+<br>
+<br>
+
+[PIMORONI PIM447](https://shop.pimoroni.com/products/trackball-breakout?variant=27672765038675)
+
+![](img/img0003.jpg)
+
 
 <br>
 The size of the PCB is within 100mmX100mm.
