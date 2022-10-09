@@ -53,6 +53,8 @@ Please use at your own risk.
 自己責任で利用してください。
 <br>
 
+## Booth
+https://booth.pm/ja/items/4190386
 
 ## Build Guide
 https://github.com/telzo2000/cool536/blob/main/buildguide_for_cool536.md
