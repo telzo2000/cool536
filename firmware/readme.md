@@ -30,7 +30,7 @@ If you need a trackball,
 トラックボールが必要な場合、
 <br>
 <br>
-Soon.
+https://github.com/telzo2000/cool536/tree/main/firmware/firmware_cool536r<br>
 <br>
 <br>
-あとで。
+[remap](https://remap-keys.app)に対応済み。
