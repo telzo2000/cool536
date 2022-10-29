@@ -3,11 +3,9 @@
 
 # change history
 
-
+ver.1.30　It also supports I2C communication.
 <br>
-cool536xiao_ver.1.1 Seeed XIAO RP2040 compatible cool536.However, the firmware has not yet been developed.
-<br>
-cool536xiao_ver.1.1 Seeed XIAO RP2040対応のcool536。ただし、ファームウェアは未整備。
+ver.1.30　I2C通信にも対応。
 <br><br>
 ver.1.20　Enlarged screw holes on the pcb.A spacer is passed through from the switch plate to the bottom plate.
 <br>
