@@ -29,7 +29,15 @@
 #define ENCODERS_PAD_A_RIGHT {D7,D4 }
 #define ENCODERS_PAD_B_RIGHT {E6,C6}
 
-#define SOFT_SERIAL_PIN D2 
+#define MASTER_LEFT
+
+#define SOFT_SERIAL_PIN D2
+//#define SELCT_SOFT_SERIAL_SPEED {4}
+//#define USE_I2C
+#define MASTER_LEFT
+#define SPLIT_OLED_ENABLE
+
+#define SPLIT_USB_DETECT
 
 #define RGB_DI_PIN D3
 #ifdef RGB_DI_PIN
