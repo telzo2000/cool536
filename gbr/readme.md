@@ -3,9 +3,9 @@
 
 # change history
 
-The trackball parts are divided into left and right.
+The PIM447trackball parts are divided into left and right.
 <br>
-トラックボール部品は左右に分けました。
+PIM447トラックボール部品は左右に分けました。
 <br><br>
 ver.1.20　Enlarged screw holes on the pcb.A spacer is passed through from the switch plate to the bottom plate.
 <br>
