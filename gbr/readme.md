@@ -3,9 +3,9 @@
 
 # change history
 
-ver.1.30　It also supports I2C communication.
+The trackball parts are divided into left and right.
 <br>
-ver.1.30　I2C通信にも対応。
+トラックボール部品は左右に分けました。
 <br><br>
 ver.1.20　Enlarged screw holes on the pcb.A spacer is passed through from the switch plate to the bottom plate.
 <br>
