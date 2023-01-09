@@ -3,9 +3,19 @@
 
 # change history
 
+Ver.1.40 Compatible with [AZ1UBALL](https://booth.pm/ja/items/4202085).
+<br>
+
+ver.1.40 [AZ1UBALL](https://booth.pm/ja/items/4202085)に対応。
+
+<br><br>
 The PIM447trackball parts are divided into left and right.
 <br>
 PIM447トラックボール部品は左右に分けました。
+<br><br>
+I2C communication failed. Maybe the firmware will fix it.
+<br>
+ver.1.30 I2C通信をしたが、失敗。多分、ファームウェアで解決する。
 <br><br>
 ver.1.20　Enlarged screw holes on the pcb.A spacer is passed through from the switch plate to the bottom plate.
 <br>
