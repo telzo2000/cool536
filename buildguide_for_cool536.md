@@ -280,7 +280,7 @@ In that case, you will need trackballpart.
 <br>
 In addition to PIM447 and trackballpart, you will need 10 M2 screws, 6 M2 spacers 3mm, and a pin header.
 <br><br>
-PIM447とtrackballpartの他に、M2ネジ10本、M2スペーサー3mm、ピンヘッダが必要となります。
+PIM447とtrackballpartの他に、M2ネジ3mm10本、M2スペーサー3mm、ピンヘッダが必要となります。
 <br><br>
 
 ![](img/img0004.jpg)
