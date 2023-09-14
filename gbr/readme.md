@@ -13,7 +13,7 @@ The PIM447trackball parts are divided into left and right.
 <br>
 PIM447トラックボール部品は左右に分けました。
 <br><br>
-I2C communication failed. Maybe the firmware will fix it.
+ver.1.30 I2C communication failed. Maybe the firmware will fix it.
 <br>
 ver.1.30 I2C通信をしたが、失敗。多分、ファームウェアで解決する。
 <br><br>
